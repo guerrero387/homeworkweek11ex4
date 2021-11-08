@@ -1,0 +1,220 @@
+\<!doctype html>
+
+<html lang="en">
+
+  
+
+<head>
+
+      
+  <meta charset="utf-8">
+  <meta name="viewport"  content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+  <title>Meal Charge Calculation</title>
+
+  <style>
+    
+    
+    body {
+      background: linear-gradient(to right, darkgreen 0%, yellow 100%);
+      color: black;
+      
+    }
+    
+
+    h1{
+      font-family: 'lobster', cursive ;
+    }
+    tr,td{
+        font-weight: bold;
+    }
+
+    img {
+      width: 450px;
+      height: auto;
+      border: black 5px;
+      border-radius: 15%;
+      
+
+    }
+
+    .tableclass{
+      border: solid rgb(180, 247, 180) 10px;
+    }
+
+    a:link,
+    a:visited{
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+
+      
+
+
+
+
+
+
+    
+</head>
+
+<body>
+
+  <table class="tableclass">
+    <tr>
+      <td>
+
+        <h1>Meal Charge calculations</h1>
+        <p style="font-weight: bold;">Calculate total meal cost. Tax is 8.25% of meal cost. Tip is 15% of meal cost.
+            Total meal cost is equal to the meal cost plus the tax and plus the tip. <br>
+
+            <form name="textform">
+          <Span>Enter meal cost:
+              <input name="costOfMeal" size="10">
+          </Span>
+            </form>
+        </p>
+
+        <table>
+          
+          <tr>
+            <td id="display"></td>
+          
+
+            <td>
+              <form name="theform">
+
+
+                <table>
+
+                  <tr>
+                      <h2>Description Price</h2>
+                    <td>Meal Cost:</td>
+                    <td style="background-color: white; color: black" id="mealCostFm" ></td>
+                  </tr>
+
+                  <tr>
+                    <td>Tax: (8.25%)</td>
+                    <td style="background-color: white; color: black" id="taxFm" ></td>
+                  </tr>
+
+                  <tr>
+                    <td>Tip:(15%) </td>
+                    <td style="background-color: white; color: black" id="tipFm" ></td>
+                  </tr>
+
+                  <tr>
+                    <td>Total:</td>
+                    <td style="background-color: white; color: black" id="totalFm" ></td>
+                  </tr>
+
+                  
+
+                  <tr>
+                    <td><input type="button" name="calc" value="Calculate" onclick="calculate();"></td>
+                    <td><input type="button" name="clear" value="Clear" onclick="clearinfo();"></td>
+                    
+                  </tr>
+
+                </table>
+
+              </form>
+
+            </td>
+          </tr>
+        </form>
+        </table>
+
+       <script>
+           function calculate(){
+               const mealTax = .0825
+               const mealTip = .15
+            
+               var mealCost;
+               var tax;
+               var tip;
+               var total;
+
+               //get the value from the field
+               mealCost = parseFloat(document.textform.costOfMeal.value);
+
+               //calculate
+               tax = parseFloat(mealCost * mealTax);
+               tip = parseFloat(mealCost * mealTip);
+
+               total = parseFloat(mealCost + tax + tip);
+
+               //display calculations
+              
+
+               document.getElementById("mealCostFm").innerHTML = "$ " + mealCost.toFixed(2);
+               document.getElementById("taxFm").innerHTML = "$ " + tax.toFixed(2);
+               document.getElementById("tipFm").innerHTML = "$ " + tip.toFixed(2);
+               document.getElementById("totalFm").innerHTML = "$ " + total.toFixed(2);
+               
+
+
+
+           }
+
+           function clearinfo(){
+               document.getElementById("mealCostFm").innerHTML = " ";
+               document.getElementById("taxFm").innerHTML = " ";
+               document.getElementById("tipFm").innerHTML = " ";
+               document.getElementById("totalFm").innerHTML = " ";
+
+               document.textform.costOfMeal.focus();
+
+           }
+
+
+           function getImages(){
+
+              document.textform.costOfMeal.focus();          
+                     
+
+              
+              //create the images array
+              images = new Array(5);
+
+              //get the element by ID
+              display = document.getElementById("display");
+
+              //initialize the array with images
+              images[0] = "<img src= 'food1.jpg' alt= 'image of food 1'>";
+              images[1] = "<img src= 'food2.jpg' alt= 'image of food 2'>";
+              images[2] = "<img src= 'food3.jpg' alt= 'image of food 3'>";
+              images[3] = "<img src= 'food4.jpg' alt= 'image of food 4'>";
+              images[4] = "<img src= 'food5.jpg' alt= 'image of food 5'>";
+
+              //get random index into the arrays
+              i = Math.floor(Math.random() * images.length);
+
+              //display the image to the page
+              display.innerHTML = images[i];
+
+        }
+
+        getImages();
+            
+      
+       </script>
+       
+      </td>
+    </tr>
+
+  </table>
+
+  <p></p>
+
+<a href="http://csnet.southtexascollege.edu/localuser/oguerrer/">Go Back to HOMEPAGE</a>
+<br>Oscar Guerrero
+
+</body>
+
+</html>
